@@ -2,13 +2,33 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import Button from "./ui/Button";
 import { useRef, useState } from "react";
+import axios from "axios";
 
 const AddTodo = ({ setTodos }) => {
   const [addTodo, setAddTodo] = useState("");
   const todoRef = useRef();
 
   const addTodoHandler = () => {
-    setTodos((prev) => [...prev, { title: addTodo, completed: false }]);
+    let data = {
+      title: addTodo,
+      completed: false,
+    };
+
+    axios
+      .post("http://localhost:8080/api/todo", data, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((response) => {
+        setTodos((prev) => [
+          ...prev,
+          {
+            _id: response.data._id,
+            title: response.data.title,
+            completed: response.data.completed,
+          },
+        ]);
+      })
+      .catch((error) => {});
   };
 
   const todoChangeHandler = () => {
@@ -27,7 +47,7 @@ const AddTodo = ({ setTodos }) => {
       />
       <Button
         onClick={addTodoHandler}
-        variant="outline-primary"
+        varient="outline-primary"
         id="button-addon2"
       >
         Add

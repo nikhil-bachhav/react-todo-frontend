@@ -5,8 +5,8 @@ const Button = (props) => {
     <ReactButton
       className={props.className}
       onClick={props.onClick}
-      variant={props.varient}
-      style={{ marginRight: "5px" }}
+      variant={props.variant}
+      style={props.style}
     >
       {props.children}
     </ReactButton>
