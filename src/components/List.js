@@ -9,7 +9,7 @@ const List = ({ todos, setTodos, handleShow }) => {
     });
     axios
       .delete(
-        "https://react-todo-backend-production.up.railway.app/api/todo/" + id,
+        "https://react-todo-back-end.onrender.com/api/todo/" + id,
         {},
         {
           headers: { "Content-Type": "application/json" },
@@ -30,7 +30,7 @@ const List = ({ todos, setTodos, handleShow }) => {
     });
     axios
       .put(
-        "https://react-todo-backend-production.up.railway.app/api/todo/" + id,
+        "https://react-todo-back-end.onrender.com/api/todo/" + id,
         { completed: !selectedTodo[0].completed },
         {
           headers: { "Content-Type": "application/json" },
