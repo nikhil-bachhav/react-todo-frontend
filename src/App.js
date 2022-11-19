@@ -57,7 +57,7 @@ function App() {
 
   return (
     <div className="container mt-5">
-      <h1 className="mb-2">Todo App</h1>
+      <h1 className="mb-3">Todo App</h1>
       <AddTodo setTodos={setTodos} />
       <List
         todos={todos}
