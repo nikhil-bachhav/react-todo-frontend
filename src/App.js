@@ -50,7 +50,6 @@ function App() {
 
   useEffect(() => {
     let page = parseInt(currentPage);
-    console.log(page);
     getTodos(page);
   }, [currentPage]);
 
