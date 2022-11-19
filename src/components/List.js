@@ -9,7 +9,7 @@ const List = ({ todos, setTodos, handleShow }) => {
     });
     axios
       .delete(
-        "http://localhost:8080/api/todo/" + id,
+        "https://react-todo-backend-production.up.railway.app/api/todo/" + id,
         {},
         {
           headers: { "Content-Type": "application/json" },
@@ -30,7 +30,7 @@ const List = ({ todos, setTodos, handleShow }) => {
     });
     axios
       .put(
-        "http://localhost:8080/api/todo/" + id,
+        "https://react-todo-backend-production.up.railway.app/api/todo/" + id,
         { completed: !selectedTodo[0].completed },
         {
           headers: { "Content-Type": "application/json" },
