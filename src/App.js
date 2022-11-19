@@ -57,6 +57,7 @@ function App() {
 
   return (
     <div className="container mt-5">
+      <h1>Todo App</h1>
       <AddTodo setTodos={setTodos} />
       <List
         todos={todos}
