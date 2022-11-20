@@ -1,0 +1,15 @@
+.action-btn {
+  font-size: 1rem;
+}
+.completed-btn {
+  width: 130px;
+}
+
+@media (max-width: 768px) {
+  .completed-btn {
+    width: 32%;
+  }
+  .action-btn {
+    font-size: 10px;
+  }
+}

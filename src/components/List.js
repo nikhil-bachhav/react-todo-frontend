@@ -1,6 +1,7 @@
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "./ui/Button";
 import axios from "axios";
+import "../list.css";
 
 const List = ({ todos, setTodos, handleShow }) => {
   const deleteTodoHandler = (id) => {
@@ -55,17 +56,17 @@ const List = ({ todos, setTodos, handleShow }) => {
             {todo.title}
             <Button
               onClick={() => completeTodoHandler(todo._id)}
-              className="float-end"
+              className="float-end action-btn completed-btn"
               variant={`${
                 todo.completed ? "outline-success" : "outline-primary"
               } `}
-              style={{ width: "130px", marginLeft: "5px" }}
+              style={{ marginLeft: "5px" }}
             >
               {todo.completed ? "Completed" : "Mark as done"}
             </Button>
             <Button
               onClick={() => deleteTodoHandler(todo._id)}
-              className="float-end"
+              className="float-end action-btn"
               variant="outline-danger"
               style={{ marginLeft: "5px" }}
             >
@@ -73,7 +74,7 @@ const List = ({ todos, setTodos, handleShow }) => {
             </Button>
             <Button
               variant="outline-warning"
-              className="float-end"
+              className="float-end action-btn"
               onClick={() => handleShow({ _id: todo._id, title: todo.title })}
               style={{ width: "60px", marginLeft: "5px" }}
             >
