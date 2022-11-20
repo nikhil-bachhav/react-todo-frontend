@@ -1,5 +1,5 @@
 <h1 align="center">
-  React Todo App
+  React Todo App (Frontend)
 </h1>
 
 ### `Live Demo`
