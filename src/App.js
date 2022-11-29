@@ -66,7 +66,7 @@ function App() {
       <AddTodo setTodos={setTodos} />
       {isLoading ? (
         <div className="d-flex justify-content-center">
-          <InfinitySpin height="150" width="150" color="#0b5ed7" />
+          <InfinitySpin width="100" color="#0b5ed7" />
         </div>
       ) : (
         <List
