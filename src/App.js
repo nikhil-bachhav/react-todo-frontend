@@ -4,6 +4,7 @@ import List from "./components/List";
 import axios from "axios";
 import ModalComponent from "./components/ui/Modal";
 import PaginationBasic from "./components/ui/Pagination";
+import { InfinitySpin } from "react-loader-spinner";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -12,20 +13,24 @@ function App() {
   const [editTodo, setEditTodo] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalIems, setTotalItems] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const handleShow = (todo) => {
     setEditTodo(todo);
     setShow(true);
   };
 
   const getTodos = (page) => {
+    setIsLoading(true);
     axios
       .get("https://react-todo-back-end.onrender.com/api/todo/" + page)
       .then(function (response) {
         setTodos(response.data[0].paginatedResult);
         setTotalItems(response.data[0].totalCount[0].totalCount);
+        setIsLoading(false);
       })
       .catch(function (error) {
         console.log(error);
+        setIsLoading(false);
       });
   };
 
@@ -59,13 +64,19 @@ function App() {
     <div className="container mt-5">
       <h1 className="mb-3">Todo App</h1>
       <AddTodo setTodos={setTodos} />
-      <List
-        todos={todos}
-        setTodos={setTodos}
-        handleClose={handleClose}
-        handleShow={handleShow}
-        setEditTodo={setEditTodo}
-      />
+      {isLoading ? (
+        <div className="d-flex justify-content-center">
+          <InfinitySpin height="150" width="150" color="#0b5ed7" />
+        </div>
+      ) : (
+        <List
+          todos={todos}
+          setTodos={setTodos}
+          handleClose={handleClose}
+          handleShow={handleShow}
+          setEditTodo={setEditTodo}
+        />
+      )}
       {show && (
         <ModalComponent
           handleClose={handleClose}
