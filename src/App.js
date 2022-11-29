@@ -65,7 +65,10 @@ function App() {
       <h1 className="mb-3">Todo App</h1>
       <AddTodo setTodos={setTodos} />
       {isLoading ? (
-        <div className="d-flex justify-content-center">
+        <div
+          className="d-flex justify-content-center"
+          style={{ marginRight: "5%" }}
+        >
           <InfinitySpin width="100" color="#0b5ed7" />
         </div>
       ) : (
