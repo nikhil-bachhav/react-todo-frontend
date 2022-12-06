@@ -15,9 +15,13 @@ const AddTodo = ({ setTodos }) => {
     };
 
     axios
-      .post("https://react-todo-back-end.onrender.com/api/todo", data, {
-        headers: { "Content-Type": "application/json" },
-      })
+      .post(
+        "https://react-todo-backend-production.up.railway.app/api/todo",
+        data,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      )
       .then((response) => {
         setTodos((prev) => [
           ...prev,

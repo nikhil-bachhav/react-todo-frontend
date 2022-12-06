@@ -22,8 +22,11 @@ function App() {
   const getTodos = (page) => {
     setIsLoading(true);
     axios
-      .get("https://react-todo-back-end.onrender.com/api/todo/" + page)
+      .get(
+        "https://react-todo-backend-production.up.railway.app/api/todo/" + page
+      )
       .then(function (response) {
+        console.log(response);
         setTodos(response.data[0].paginatedResult);
         setTotalItems(response.data[0].totalCount[0].totalCount);
         setIsLoading(false);
@@ -40,7 +43,7 @@ function App() {
     );
     axios
       .put(
-        "https://react-todo-back-end.onrender.com/api/todo/" + id,
+        "https://react-todo-backend-production.up.railway.app/api/todo/" + id,
         { title: title },
         {
           headers: { "Content-Type": "application/json" },
