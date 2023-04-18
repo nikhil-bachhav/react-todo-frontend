@@ -25,13 +25,11 @@ function App() {
     axios
       .get(constants.API_BASE_URL + "todo/" + page)
       .then(function (response) {
-        console.log(response);
         setTodos(response.data[0].paginatedResult);
         setTotalItems(response.data[0].totalCount[0].totalCount);
         setIsLoading(false);
       })
       .catch(function (error) {
-        console.log(error);
         setIsLoading(false);
       });
   };
