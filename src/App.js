@@ -5,6 +5,7 @@ import axios from "axios";
 import ModalComponent from "./components/ui/Modal";
 import PaginationBasic from "./components/ui/Pagination";
 import { InfinitySpin } from "react-loader-spinner";
+import { constants } from "./config";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -22,9 +23,7 @@ function App() {
   const getTodos = (page) => {
     setIsLoading(true);
     axios
-      .get(
-        "https://react-todo-backend-production.up.railway.app/api/todo/" + page
-      )
+      .get(constants.API_BASE_URL + "todo/" + page)
       .then(function (response) {
         console.log(response);
         setTodos(response.data[0].paginatedResult);
@@ -43,7 +42,7 @@ function App() {
     );
     axios
       .put(
-        "https://react-todo-backend-production.up.railway.app/api/todo/" + id,
+        constants.API_BASE_URL + "todo/" + id,
         { title: title },
         {
           headers: { "Content-Type": "application/json" },

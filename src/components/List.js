@@ -2,6 +2,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Button from "./ui/Button";
 import axios from "axios";
 import "../list.css";
+import { constants } from "../config";
 
 const List = ({ todos, setTodos, handleShow }) => {
   const deleteTodoHandler = (id) => {
@@ -10,7 +11,7 @@ const List = ({ todos, setTodos, handleShow }) => {
     });
     axios
       .delete(
-        "https://react-todo-backend-production.up.railway.app/api/todo/" + id,
+        constants.API_BASE_URL + "todo/" + id,
         {},
         {
           headers: { "Content-Type": "application/json" },
@@ -31,7 +32,7 @@ const List = ({ todos, setTodos, handleShow }) => {
     });
     axios
       .put(
-        "https://react-todo-backend-production.up.railway.app/api/todo/" + id,
+        constants.API_BASE_URL + "todo/" + id,
         { completed: !selectedTodo[0].completed },
         {
           headers: { "Content-Type": "application/json" },
